@@ -16,8 +16,15 @@ class EasyParallax {
 
     this.scrollSensitivity = 0.05;
     this.widthLimit = 720;
+    // Mobile width lock
 
     this.onlyScroll = false;
+    // If onlyScroll is true, mouse movement will be ignored.
+
+    this.scrollSpeed = 1;
+    // scrollSpeed
+    // For a zero-value, scroll position will be ignored.
+    // For other values, positive or negative, scroll will be accounted for.
     
     this.init();
 
@@ -96,7 +103,7 @@ class EasyParallax {
         // offset.y += (window.scrollY - element.offset.top + screen.availHeight/2) * this.scrollSensitivity;
       } else {
         offset.x = 0;
-        offset.y += ((screen.availHeight / 2 + window.scrollY - element.offset.top) * this.scrollSensitivity * element.elevation);
+        offset.y += ((screen.availHeight / 2 + window.scrollY * this.scrollSpeed - element.offset.top) * this.scrollSensitivity * element.elevation);
       }
 
       offset.x += element.initial.left - element.offset.left
